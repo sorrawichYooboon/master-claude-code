@@ -1,0 +1,38 @@
+{
+  "model": "claude-sonnet-4-6",
+
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "afplay /System/Library/Sounds/Glass.aiff 2>/dev/null || true"
+          }
+        ]
+      }
+    ]
+  }
+}
+
+// Cost optimization notes for this settings file:
+//
+// model: "claude-sonnet-4-6"
+//   Locks default to Sonnet. Switch to Opus manually with /model opus when needed.
+//   Prevents accidentally running Opus on simple tasks.
+//
+// Stop hook plays a sound notification.
+//   Lets you context-switch away during long tasks and come back when Claude finishes.
+//   No cost impact, but saves wall-clock time.
+//
+// What's intentionally NOT in this file:
+//   - No MCP servers (connect only when needed: claude mcp add)
+//   - No PostToolUse lint hooks (adds latency to every edit; run lint manually or on Stop)
+//   - No unnecessary permissions
+//
+// Context optimization (not in settings.json, but follow these):
+//   - Keep CLAUDE.md under 120 lines
+//   - Use @file to load docs on demand, not in CLAUDE.md
+//   - Compact at 60-70% context usage (/context to check)
+//   - Use /clear between unrelated tasks

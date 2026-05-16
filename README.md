@@ -60,11 +60,11 @@ cd master-claude-code
 # Open Claude Code in this directory
 claude
 
-# Run the weekly update command
-/project:weekly-update
+# Run the weekly update skill
+/weekly-update
 
 # Add a new topic
-/project:add-topic "hooks"
+/add-topic "hooks"
 ```
 
 ---
@@ -82,10 +82,10 @@ master-claude-code/
 │
 ├── .claude/
 │   ├── settings.json                ← Repo-level Claude Code settings
-│   └── commands/
-│       ├── weekly-update.md         ← /project:weekly-update
-│       ├── add-topic.md             ← /project:add-topic
-│       └── search-latest.md         ← /project:search-latest
+│   └── skills/
+│       ├── weekly-update/SKILL.md   ← /weekly-update
+│       ├── add-topic/SKILL.md       ← /add-topic
+│       └── search-latest/SKILL.md   ← /search-latest
 │
 ├── topics/
 │   ├── 01-memory-and-claude-md/
@@ -306,13 +306,14 @@ Claude: [reads issue via GitHub MCP] [reads relevant code]
 
 **What it is:** Reusable instruction sets stored as `SKILL.md` files in `.claude/skills/`. Unlike custom commands (which you trigger manually), skills activate automatically when Claude detects they're relevant based on what you're asking.
 
-**Skills vs Commands:**
+**Two modes of skills:**
 
-| | Skills | Commands |
+| | Auto-triggered | Manual-only |
 |---|---|---|
-| Trigger | Automatic (Claude decides) | Manual (you type `/project:name`) |
-| Best for | Domain knowledge, coding patterns | Repeatable workflows, multi-step tasks |
-| Location | `.claude/skills/skill-name/SKILL.md` | `.claude/commands/name.md` |
+| Trigger | Claude decides when relevant | You type `/skill-name` |
+| Frontmatter | no `disable-model-invocation` | `disable-model-invocation: true` |
+| Best for | Domain knowledge, conventions | Workflows with side effects (deploy, commit) |
+| Location | `.claude/skills/<name>/SKILL.md` | `.claude/skills/<name>/SKILL.md` |
 
 **Example skill structure:**
 ```
@@ -494,15 +495,15 @@ cp templates/CLAUDE.md.go-backend.md ~/my-project/CLAUDE.md
 
 ---
 
-## Custom Commands
+## Skills (Custom Commands)
 
-Commands in `.claude/commands/` are available inside any Claude Code session opened in this repo. Type the command name to run it.
+Skills in `.claude/skills/` are available inside any Claude Code session opened in this repo.
 
-| Command | What it does |
+| Skill | What it does |
 |---|---|
-| `/project:weekly-update` | Search for Claude Code updates this week, update CHANGELOG.md and relevant topic files |
-| `/project:add-topic` | Create a new topic folder with README.md and examples structure |
-| `/project:search-latest` | Search for latest Claude Code news and return a summary |
+| `/weekly-update` | Search for Claude Code updates this week, update CHANGELOG.md and relevant topic files |
+| `/add-topic` | Create a new topic folder with README.md, tips.md, and examples/ |
+| `/search-latest` | Search for latest Claude Code news and return a summary |
 
 **How to run:**
 ```bash
@@ -511,13 +512,13 @@ cd master-claude-code
 claude
 
 # Then inside the session
-/project:weekly-update
+/weekly-update
 ```
 
-**How to add a new command:**
-1. Create a new `.md` file in `.claude/commands/`
-2. Write the prompt inside it — Claude will execute this when you run the command
-3. Use `$ARGUMENTS` to accept input: `/project:add-topic hooks`
+**How to add a new skill:**
+1. Create `.claude/skills/<name>/SKILL.md`
+2. Add YAML frontmatter: `name`, `description`, and `disable-model-invocation: true` for manual-only skills
+3. Write the prompt in the body — use `$ARGUMENTS` to accept input: `/add-topic hooks`
 
 ---
 
@@ -533,7 +534,7 @@ Every week, open this repo in Claude Code and run:
 
 ```bash
 claude
-/project:weekly-update
+/weekly-update
 ```
 
 This command instructs Claude to:
@@ -559,18 +560,3 @@ See [`resources.md`](/resources.md) for the full list. Quick links:
 - **Official best practices:** https://code.claude.com/docs/en/best-practices
 - **Changelog tracker:** https://claudefa.st/blog/guide/changelog
 - **Community repo:** https://github.com/shanraisshan/claude-code-best-practice
-
----
-
-## Contributing
-
-This is a personal learning repo but PRs are welcome — especially:
-- Corrections to anything outdated
-- New examples that work in real projects
-- Missing tips or gotchas you've discovered
-
----
-
-## License
-
-MIT — use anything here freely in your own projects.

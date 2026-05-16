@@ -1,0 +1,18 @@
+# Claude Code — .gitignore entries
+# Add these to your project's .gitignore
+
+# Personal local Claude instructions (project-specific, not for team)
+CLAUDE.local.md
+
+# Claude Code project settings that may contain personal config
+# Note: .claude/settings.json is usually safe to commit (contains shared config)
+# Uncomment below only if your settings.json has personal/sensitive data:
+# .claude/settings.local.json
+
+# Auto-generated memory files (Claude writes these itself)
+# These live in ~/.claude/projects/ not in your project, so usually no action needed.
+# If you've configured a custom memory path inside the project:
+# .claude/memory/
+
+# Claude Code session state (not typically stored in project dir)
+# .claude/sessions/
