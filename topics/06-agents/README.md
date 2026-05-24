@@ -32,6 +32,14 @@ System prompt for the agent goes here.
 **Spawning a subagent from the main agent:**
 Claude automatically discovers agent definitions and can spawn them when appropriate. You can also instruct Claude directly: "use a subagent for the review step."
 
+**Listing live sessions:**
+```bash
+claude agents          # interactive view — tab title shows awaiting-input count
+claude agents --json   # JSON output for scripting (v2.1.145)
+```
+
+**Background sessions:** Pinned background sessions stay alive when idle and restart in-place on updates — no manual restart needed (v2.1.147).
+
 ## When to use
 
 **Use multi-agent when:**

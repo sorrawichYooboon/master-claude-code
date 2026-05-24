@@ -35,6 +35,7 @@ resources.md           ← links to official docs and community
 06. Agents & multi-agent workflows
 07. Session management
 08. Cost & performance
+09. Plugins (skills + agents + hooks + MCP + commands bundled)
 
 ## Custom Commands
 

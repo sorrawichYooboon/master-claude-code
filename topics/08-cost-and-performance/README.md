@@ -40,6 +40,7 @@ Every task uses the model set at session start unless you switch mid-session wit
 ```bash
 /context    # see context breakdown by source
 /cost       # token usage and estimated cost this session (API users)
+/usage      # per-category cost breakdown: skills, subagents, plugins, MCP servers (v2.1.149)
 /stats      # usage stats (Pro/Max users)
 ```
 

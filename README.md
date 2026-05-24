@@ -22,6 +22,7 @@ This repo documents everything I learn about Claude Code — from the basics of 
   - [06 · Agents & Multi-agent](#06--agents--multi-agent)
   - [07 · Session Management](#07--session-management)
   - [08 · Cost & Performance](#08--cost--performance)
+  - [09 · Plugins](#09--plugins)
 - [Templates](#templates)
 - [Custom Commands](#custom-commands)
 - [Cheatsheet](#cheatsheet)
@@ -95,7 +96,8 @@ master-claude-code/
 │   ├── 05-skills/
 │   ├── 06-agents/
 │   ├── 07-session-management/
-│   └── 08-cost-and-performance/
+│   ├── 08-cost-and-performance/
+│   └── 09-plugins/
 │
 └── templates/
     ├── CLAUDE.md.global.md
@@ -470,6 +472,40 @@ claude --resume "fix-kafka-consumer-timeout"
 ```
 
 → See [`topics/08-cost-and-performance/`](/topics/08-cost-and-performance/)
+
+---
+
+### 09 · Plugins
+
+**What it is:** One-install packages that bundle skills + agents + hooks + MCP servers + commands together. Instead of wiring each component individually, a plugin delivers a complete integration in a single command.
+
+**Plugin marketplace:** https://claude.com/plugins (150+ plugins, Anthropic-verified badges for audited ones)
+
+**Install workflow:**
+```bash
+/plugin <name>             # preview contents before installing
+/plugin install <name>     # install
+```
+
+**What a plugin can include:**
+
+| Component | What it adds |
+|---|---|
+| Skills | Auto-triggered instruction sets |
+| Agents | Specialized subagent definitions |
+| Hooks | Automation (PreToolUse, PostToolUse, etc.) |
+| MCP servers | External tool connections |
+| Commands | Slash commands |
+
+**Plugin vs raw MCP:**
+- Plugin → use for popular integrations (GitHub, Slack, Figma, Vercel)
+- Raw MCP → use for custom internal tools and private APIs
+
+**When to use:**
+- An integration you need already exists in the marketplace
+- You want a complete, tested workflow — not just a single connection
+
+→ See [`topics/09-plugins/`](/topics/09-plugins/)
 
 ---
 

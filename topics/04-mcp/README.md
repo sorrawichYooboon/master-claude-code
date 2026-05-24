@@ -65,3 +65,5 @@ Claude: [reads issue via GitHub MCP]
 Any internal API or tool can be wrapped as an MCP server. Claude Code connects to it the same way as any public server. The MCP spec is at https://modelcontextprotocol.io.
 
 → See [examples/](examples/) and [tips.md](tips.md)
+
+**Note:** For popular integrations (GitHub, Slack, Figma), prefer installing a **plugin** instead of a raw MCP server — plugins bundle the MCP + skills + agents in one step. See [topic 09 · Plugins](../09-plugins/README.md).

@@ -17,7 +17,7 @@ Slash commands are typed directly in the Claude Code prompt. Keyboard shortcuts 
 | `/context` | Show what is consuming your context window |
 | `/memory` | Inspect all loaded CLAUDE.md and memory files |
 | `/recap` | Summarize what happened in this session |
-| `/diff` | Show current uncommitted changes |
+| `/diff` | Show current uncommitted changes — detail view scrollable with j/k, arrows, Space (v2.1.149) |
 
 **Setup & config:**
 
@@ -31,6 +31,7 @@ Slash commands are typed directly in the Claude Code prompt. Keyboard shortcuts 
 | Command | What it does |
 |---|---|
 | `/review` | Built-in code review of current changes |
+| `/code-review` | Code simplification and quality review; add effort level with `/code-review high` (renamed from `/simplify` in v2.1.146) |
 | `/security-review` | Built-in security audit |
 
 **Cost & usage:**
@@ -38,6 +39,7 @@ Slash commands are typed directly in the Claude Code prompt. Keyboard shortcuts 
 | Command | What it does |
 |---|---|
 | `/cost` | Token usage and cost this session (API users) |
+| `/usage` | Per-category cost breakdown: skills, subagents, plugins, MCP servers (added v2.1.149) |
 | `/stats` | Usage stats (Pro/Max users) |
 
 **Session management:**
