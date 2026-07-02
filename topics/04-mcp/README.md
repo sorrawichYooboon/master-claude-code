@@ -20,9 +20,13 @@ Servers run as local processes (stdio) or remote endpoints (HTTP/SSE). Claude Co
 claude mcp add        # interactive setup wizard
 claude mcp list       # see what's connected
 claude mcp remove     # disconnect a server
+claude mcp login      # authenticate a configured MCP server from your shell (v2.1.186)
+claude mcp logout     # clear stored credentials for a server (v2.1.186)
 ```
 
 Configuration is stored in `~/.claude/mcp.json` (global) or `.claude/mcp.json` (project-level).
+
+**Security:** MCP servers from untrusted repositories require explicit approval before connecting (v2.1.196). A startup notice appears when an MCP server requires authentication (v2.1.193).
 
 ## When to use
 

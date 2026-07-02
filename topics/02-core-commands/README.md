@@ -25,6 +25,8 @@ Slash commands are typed directly in the Claude Code prompt. Keyboard shortcuts 
 |---|---|
 | `/init` | Generate a starter CLAUDE.md from your codebase |
 | `/model` | Switch between Sonnet, Opus, Haiku mid-session |
+| `/config key=value` | Set any setting from the prompt, `-p` mode, or Remote Control (v2.1.178) |
+| `/effort` | Set reasoning effort level: `low`, `medium`, `high`, `xhigh` (v2.1.150) |
 
 **Review commands:**
 
@@ -48,6 +50,8 @@ Slash commands are typed directly in the Claude Code prompt. Keyboard shortcuts 
 |---|---|
 | `/rename` | Give the current session a meaningful name |
 | `/branch` | Fork session to experiment without losing current state |
+| `/cd <path>` | Move session to a new working directory without rebuilding the prompt cache (v2.1.166) |
+| `/rewind` | Resume from a checkpoint — works even past `/clear` (v2.1.191) |
 
 **Keyboard shortcuts:**
 

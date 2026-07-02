@@ -40,6 +40,26 @@ claude agents --json   # JSON output for scripting (v2.1.145)
 
 **Background sessions:** Pinned background sessions stay alive when idle and restart in-place on updates — no manual restart needed (v2.1.147).
 
+**Background agent PR automation:** When a background agent finishes code work, it automatically commits, pushes, and opens a draft PR — no manual step needed (v2.1.198).
+
+**Sub-agent chains:** Sub-agents can spawn their own sub-agents. Chains are capped at five levels deep to prevent runaway recursion (v2.1.166).
+
+**Extended thinking inheritance:** Sub-agents inherit the session's extended thinking configuration (v2.1.198).
+
+**Background permission prompts:** Background sub-agents surface permission prompts in the main session instead of auto-denying (v2.1.191).
+
+**Notification hook:** Add an `agent_needs_input` / `agent_completed` hook in settings.json to receive notifications when background agents need attention or finish (v2.1.198):
+
+```json
+{
+  "hooks": {
+    "Notification": [
+      { "matcher": "", "hooks": [{ "type": "command", "command": "notify-send \"Claude\" \"$CLAUDE_NOTIFICATION\"" }] }
+    ]
+  }
+}
+```
+
 ## When to use
 
 **Use multi-agent when:**

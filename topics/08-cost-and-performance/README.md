@@ -6,15 +6,21 @@ Understanding how tokens, model choice, and context management affect speed and 
 
 ## How it works
 
-**Model tiers:**
+**Model tiers (updated July 2026):**
 
-| Model | Tokens/sec | Best for | Cost |
-|---|---|---|---|
-| Haiku | Fastest | Simple edits, file reading, high-volume tasks | Cheapest |
-| Sonnet | Balanced | Most coding tasks | Medium |
-| Opus | Slower | Architecture, hard debugging, complex planning | Most expensive |
+| Model | Best for | Pricing (per MTok) |
+|---|---|---|
+| Haiku 4.5 | Simple edits, file reading, high-volume subagents | Cheapest |
+| Sonnet 5 | Most coding tasks — **new default** (1M-token context) | $2 in / $10 out (promo through Aug 31) |
+| Opus 4.8 | Architecture, hard debugging, complex planning; use `/effort xhigh` | Higher |
 
 Every task uses the model set at session start unless you switch mid-session with `/model`.
+
+**Fallback models:** Set `fallbackModel` in settings.json to configure up to three fallback models tried in order if the primary model is unavailable (v2.1.166):
+
+```json
+{ "fallbackModel": ["claude-opus-4-8", "claude-sonnet-5"] }
+```
 
 **Context window:** Claude's context window fills with your conversation history, loaded CLAUDE.md files, MCP server metadata, and file contents Claude has read. Larger context = slower responses and higher cost. Compacting removes conversation history while keeping key findings.
 

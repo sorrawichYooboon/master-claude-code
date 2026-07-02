@@ -6,7 +6,7 @@ Tools for naming, resuming, and branching Claude Code sessions. Sessions persist
 
 ## How it works
 
-Claude Code stores sessions locally. Each session has an ID and optionally a name. You can list, resume, and branch sessions using CLI flags and slash commands.
+Claude Code stores sessions locally. Each session has an ID and an auto-generated readable name (v2.1.196). You can list, resume, and branch sessions using CLI flags and slash commands.
 
 **Key commands:**
 
@@ -15,6 +15,8 @@ Claude Code stores sessions locally. Each session has an ID and optionally a nam
 | `/rename` | Give the current session a meaningful name |
 | `/recap` | Summarize what happened in this session |
 | `/branch` | Fork current session to experiment safely |
+| `/cd <path>` | Move the session to a new working directory without rebuilding the prompt cache (v2.1.166) |
+| `/rewind` | Resume from a checkpoint — can now rewind past `/clear` (v2.1.191) |
 | `claude --continue` | Resume the most recent session |
 | `claude --resume` | Pick a session from a list |
 
